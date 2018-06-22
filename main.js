@@ -53,29 +53,29 @@ maxY = 0, maxX = 0;
     for (var key in json) {
         if (json.hasOwnProperty(key)) {
             if (key == "Start" || key == "Exit") {
-                drawSprites(maxY - json[key]['y'], json[key]['x'], key);
-                createSpriteInfo(maxY - json[key]['y'], json[key]['x'], key);
+                drawSprites(maxY - json[key]['y'] - 1, json[key]['x'], key);
+                createSpriteInfo(maxY - json[key]['y'] - 1, json[key]['x'], key);
             } else if (key == "SimpleBlock" || key == "Saw" || key == "Danger"||
             	key == "RedDec1" || key == "RedDec2" || key == "RedDec3" ||
             	key == "BlueDec1" || key == "BlueDec2" || key == "BlueDec3" ||
             	key == "PurpleDec1" || key == "PurpleDec2" || key == "PurpleDec3" ||
             	key == "GreenDec1" ||key == "GreenDec2" ||key == "GreenDec3") {
                 for (var block in json[key]) {
-                    drawSprites(maxY - json[key][block]['y'], json[key][block]['x'], key);
-                    createSpriteInfo(maxY - json[key][block]['y'], json[key][block]['x'], key);
+                    drawSprites(maxY - json[key][block]['y'] - 1, json[key][block]['x'], key);
+                    createSpriteInfo(maxY - json[key][block]['y'] - 1, json[key][block]['x'], key);
                 }
             } else {
                 for (var block in json[key]) {
-                    drawSprites(maxY - json[key][block]['position']['y'],
+                    drawSprites(maxY - json[key][block]['position']['y'] - 1,
                         json[key][block]['position']['x'],
                         key,
                         json[key][block]['teleportPosition']['x'],
-                        maxY - json[key][block]['teleportPosition']['y']);
-                    createSpriteInfo(maxY - json[key][block]['position']['y'],
+                        maxY - json[key][block]['teleportPosition']['y'] - 1);
+                    createSpriteInfo(maxY - json[key][block]['position']['y'] - 1,
                         json[key][block]['position']['x'],
                         key,
                         json[key][block]['teleportPosition']['x'],
-                        maxY - json[key][block]['teleportPosition']['y']);
+                        maxY - json[key][block]['teleportPosition']['y'] - 1);
                 }
             }
         }
@@ -165,13 +165,13 @@ function saveAsJson() {
                 if (data[i][q].type == "Start" || data[i][q].type == "Exit") {
                     obj = {
                         x: data[i][q].x,
-                        y: maxY - data[i][q].y
+                        y: maxY - data[i][q].y -1
                     };
                     root[data[i][q].type] = obj;
                 } else if (data[i][q].type == "Empty" || data[i][q].type == "Red" || data[i][q].type == "Green" || data[i][q].type == "Blue" || data[i][q].type == "Purple") {
                     obj = {
-                        position: { x: data[i][q].position.x, y: maxY - data[i][q].position.y },
-                        teleportPosition: { x: data[i][q].teleportPosition.x, y: maxY - data[i][q].teleportPosition.y }
+                        position: { x: data[i][q].position.x, y: maxY - data[i][q].position.y - 1 },
+                        teleportPosition: { x: data[i][q].teleportPosition.x, y: maxY - data[i][q].teleportPosition.y -1 }
                     }
                     root[data[i][q].type].push(obj)
                 } else 
@@ -179,7 +179,7 @@ function saveAsJson() {
                 {
                     obj = {
                         x: data[i][q].x,
-                        y: maxY - data[i][q].y
+                        y: maxY - data[i][q].y -1 
                     };
                     root[data[i][q].type].push(obj);
                 }
