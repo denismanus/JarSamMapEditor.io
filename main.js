@@ -55,11 +55,11 @@ maxY = 0, maxX = 0;
             if (key == "Start" || key == "Exit") {
                 drawSprites(maxY - json[key]['y'], json[key]['x'], key);
                 createSpriteInfo(maxY - json[key]['y'], json[key]['x'], key);
-            } else if (key == "SimpleBlock" || key == "Saw" || key == "Danger"
+            } else if (key == "SimpleBlock" || key == "Saw" || key == "Danger"||
             	key == "RedDec1" || key == "RedDec2" || key == "RedDec3" ||
             	key == "BlueDec1" || key == "BlueDec2" || key == "BlueDec3" ||
             	key == "PurpleDec1" || key == "PurpleDec2" || key == "PurpleDec3" ||
-            	key == "GreenDec1" ||key == "GreenDec2" ||key == "GreenDec3" ||) {
+            	key == "GreenDec1" ||key == "GreenDec2" ||key == "GreenDec3") {
                 for (var block in json[key]) {
                     drawSprites(maxY - json[key][block]['y'], json[key][block]['x'], key);
                     createSpriteInfo(maxY - json[key][block]['y'], json[key][block]['x'], key);
